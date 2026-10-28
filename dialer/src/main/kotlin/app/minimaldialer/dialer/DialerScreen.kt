@@ -212,7 +212,7 @@ private fun CallRow(canBackspace: Boolean, onCall: () -> Unit, onBackspace: () -
             Icon(Icons.Filled.Call, contentDescription = "Call", tint = colors.onCall, modifier = Modifier.size(34.dp))
         }
         Box(Modifier.size(64.dp), contentAlignment = Alignment.Center) {
-            AnimatedVisibility(visible = canBackspace, enter = fadeIn(), exit = fadeOut()) {
+            androidx.compose.animation.AnimatedVisibility(visible = canBackspace, enter = fadeIn(), exit = fadeOut()) {
                 Box(
                     modifier = Modifier
                         .size(64.dp)
