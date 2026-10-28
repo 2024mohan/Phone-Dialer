@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application>
+        <!--
+            Bound by Telecom once this app holds the default dialer role (RoleManager.ROLE_DIALER).
+            IN_CALL_SERVICE_RINGING is not declared, so Telecom keeps playing the ringtone itself.
+        -->
+        <service
+            android:name="app.minimaldialer.calling.telecom.DialerInCallService"
+            android:exported="true"
+            android:permission="android.permission.BIND_INCALL_SERVICE">
+            <meta-data
+                android:name="android.telecom.IN_CALL_SERVICE_UI"
+                android:value="true" />
+            <intent-filter>
+                <action android:name="android.telecom.InCallService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="app.minimaldialer.calling.telecom.CallActionReceiver"
+            android:exported="false" />
+    </application>
+</manifest>
